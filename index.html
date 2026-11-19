@@ -53,6 +53,14 @@ h2{font-size:28px;margin:0 0 6px;color:var(--green-d)}
 .tips ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
 .tips li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px}
 .tips li svg{color:var(--green);flex:none;margin-top:2px}
+.contact{background:var(--green-l);border-block:1.5px solid var(--line)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.citem{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px;color:inherit}
+a.citem:hover{border-color:var(--green)}
+.citem svg{color:var(--green);flex:none}
+.citem small{display:block;color:var(--mute);font-size:13px;line-height:1.3}
+.citem b{display:block;color:var(--green-d);font-size:16px;word-break:break-all}
+.citem b.ltr{direction:ltr;text-align:right;unicode-bidi:plaintext}
 footer{background:var(--green-d);color:#cfe7d8;padding:26px 0;font-size:14px}
 footer b{color:#fff}
 @media(max-width:720px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.stats{justify-content:center}.hero-art{order:-1}}
@@ -111,6 +119,16 @@ footer b{color:#fff}
     <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg><span>استخدم كلمات مرور قوية وطويلة ومختلفة لكل حساب مهم.</span></li>
     <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l6 6"/></svg><span>تحقق من أي معلومة بالبحث عن تأييدها ثم عن ردودها.</span></li>
   </ul>
+</div></section>
+
+<section class="contact"><div class="wrap">
+  <h2>تواصل معنا</h2>
+  <p class="sub">للاقتراحات أو للإبلاغ عن رابط أو كتاب لا يعمل.</p>
+  <div class="cgrid">
+    <div class="citem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><small>الاسم</small><b>يونس دريسي</b></div></div>
+    <a class="citem" href="tel:+213659105816"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><small>الهاتف</small><b class="ltr">+213659105816</b></div></a>
+    <a class="citem" href="mailto:drysyywnsalhqyqy@gmail.com"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><small>البريد الإلكتروني</small><b class="ltr">drysyywnsalhqyqy@gmail.com</b></div></a>
+  </div>
 </div></section>
 
 <footer><div class="wrap">
