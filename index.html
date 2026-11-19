@@ -61,6 +61,18 @@ a.citem:hover{border-color:var(--green)}
 .citem small{display:block;color:var(--mute);font-size:13px;line-height:1.3}
 .citem b{display:block;color:var(--green-d);font-size:16px;word-break:break-all}
 .citem b.ltr{direction:ltr;text-align:right;unicode-bidi:plaintext}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-y{background:#f5b700;color:#2b2100;box-shadow:0 0 0 0 rgba(245,183,0,.7);animation:pulse 2s infinite}
+.btn-y:hover{background:#ffca2c}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(245,183,0,0)}100%{box-shadow:0 0 0 0 rgba(245,183,0,0)}}
+.cta{padding:0 0 44px}
+.cta-box{background:linear-gradient(135deg,var(--green) 0,var(--green-d) 100%);color:#fff;border-radius:18px;padding:28px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:3px solid #f5b700}
+.cta-ico{width:68px;height:68px;border-radius:16px;background:#fff;color:var(--green);display:grid;place-items:center;flex:none}
+.cta-txt{flex:1;min-width:230px}
+.cta-txt h2{color:#fff;margin:0 0 4px;font-size:24px}
+.cta-txt p{margin:0;color:#d7f0e1}
+.cta-box .btn{font-size:17px;padding:13px 24px}
+@media(prefers-reduced-motion:reduce){.btn-y{animation:none}}
 footer{background:var(--green-d);color:#cfe7d8;padding:26px 0;font-size:14px}
 footer b{color:#fff}
 @media(max-width:720px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.stats{justify-content:center}.hero-art{order:-1}}
@@ -74,7 +86,7 @@ footer b{color:#fff}
   <div>
     <h1>الوعي الأمني للمراهقين: تعلّم كيف تحمي نفسك وتفهم عالم الأمن السيبراني</h1>
     <p>13 كتابًا تعليميًا مجانيًا تقرؤها على الموقع مباشرة أو تحمّل كل كتاب على حدة.</p>
-    <a class="btn btn-w" href="#books">ابدأ بالكتب</a>
+    <div class="btns"><a class="btn btn-w" href="#books">ابدأ بالكتب</a><a class="btn btn-y" href="https://yunusjoe0-prog.github.io/pentest-academy/">اختبار الاختراق الأخلاقي ←</a></div>
     <div class="stats"><div><b>13</b>كتابًا</div><div><b>PDF</b>اطلاع وتحميل</div><div><b>مجاني</b>للتعلم</div></div>
   </div>
   <div class="hero-art"><svg viewBox="0 0 200 220" class="hero-logo" aria-hidden="true">
@@ -109,6 +121,13 @@ footer b{color:#fff}
     <article class="card" data-n="12"><div class="head"><div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 20h12M5 7h14M5 7l-3 7h6zM19 7l-3 7h6z"/></svg></div><div><div class="num">الكتاب 12</div><h3>القانون والأخلاق</h3></div></div><p>جرائم المعلوماتية والاختراق الأخلاقي.</p><div class="actions"><a class="btn btn-g" href="viewer.html?f=%D8%A7%D9%84%D8%AF%D8%B1%D8%B3_12_%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D9%88%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82%20-%20%D9%85%D8%AF%D8%B1%D8%B3%D8%A9%20%D8%A7%D9%84%D9%87%D8%A7%D9%83%D8%B1%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9.pdf">اطلاع</a><a class="btn btn-o" href="%D8%A7%D9%84%D8%AF%D8%B1%D8%B3_12_%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D9%88%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82%20-%20%D9%85%D8%AF%D8%B1%D8%B3%D8%A9%20%D8%A7%D9%84%D9%87%D8%A7%D9%83%D8%B1%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9.pdf" download="الدرس_12_القانون والأخلاق.pdf">تحميل</a></div></article>
   </div>
 </div></section>
+
+<section class="cta"><div class="wrap"><div class="cta-box">
+  <div class="cta-ico"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5L16 9.5"/></svg></div>
+  <div class="cta-txt"><h2>جاهز للخطوة التالية؟ تعلّم اختبار الاختراق الأخلاقي</h2>
+  <p>موقعنا الشقيق: مسار منظّم من 7 مراحل ومصادر مجانية رسمية للتدريب في بيئات قانونية.</p></div>
+  <a class="btn btn-y" href="https://yunusjoe0-prog.github.io/pentest-academy/">افتح موقع اختبار الاختراق ←</a>
+</div></div></section>
 
 <section class="tips"><div class="wrap">
   <h2>قواعد الهاكر المسؤول</h2>
