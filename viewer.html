@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قراءة الكتاب</title>
+<style>
+:root{--green:#0a6b3b;--green-d:#064d2a;--green-l:#e6f5ec}
+*{box-sizing:border-box}
+body{margin:0;background:#eef5f0;font-family:"Tajawal","Segoe UI",Tahoma,Arial,sans-serif;color:#12261b}
+.bar{position:sticky;top:0;z-index:5;background:var(--green);color:#fff;display:flex;gap:8px;align-items:center;padding:10px 12px}
+.bar a{color:#fff;text-decoration:none;font-weight:700;background:var(--green-d);padding:8px 14px;border-radius:9px;font-size:15px;white-space:nowrap}
+.bar a.dl{background:#fff;color:var(--green)}
+.bar span{flex:1;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#msg{text-align:center;padding:30px 16px;font-size:17px}
+#pages{max-width:900px;margin:0 auto;padding:10px}
+.page{background:#fff;margin:0 auto 12px;box-shadow:0 2px 10px rgba(0,0,0,.15);width:100%}
+.page canvas{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="bar"><a href="index.html">رجوع</a><span id="t"></span><a class="dl" id="dl" href="#">تحميل</a></div>
+<div id="msg">جارٍ تحميل الكتاب...</div>
+<div id="pages"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  var f = new URLSearchParams(location.search).get('f');
+  var msg = document.getElementById('msg');
+  if(!f){ msg.textContent = 'لم يُحدد كتاب.'; return; }
+  var url = encodeURIComponent(f);
+  document.getElementById('t').textContent = f.replace('.pdf','');
+  var dl = document.getElementById('dl'); dl.href = url; dl.setAttribute('download', f);
+  if(!window.pdfjsLib){ msg.innerHTML = 'تعذر تحميل أداة العرض. <a href="'+url+'">افتح الملف مباشرة</a>'; return; }
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  pdfjsLib.getDocument(url).promise.then(function(pdf){
+    msg.style.display = 'none';
+    return pdf.getPage(1).then(function(p1){
+      var box = document.getElementById('pages');
+      var width = Math.min(box.clientWidth - 20, 880);
+      var base = p1.getViewport({scale:1});
+      var scale = width / base.width;
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(!en.isIntersecting) return;
+          io.unobserve(en.target);
+          var div = en.target, n = +div.dataset.n;
+          pdf.getPage(n).then(function(pg){
+            var vp = pg.getViewport({scale: scale*dpr});
+            var c = document.createElement('canvas');
+            c.width = vp.width; c.height = vp.height;
+            div.style.minHeight = '0'; div.appendChild(c);
+            pg.render({canvasContext: c.getContext('2d'), viewport: vp});
+          });
+        });
+      }, {rootMargin: '800px 0px'});
+      for(var i=1;i<=pdf.numPages;i++){
+        var d = document.createElement('div');
+        d.className = 'page'; d.dataset.n = i;
+        d.style.minHeight = (base.height*scale) + 'px';
+        box.appendChild(d); io.observe(d);
+      }
+    });
+  }).catch(function(e){
+    msg.innerHTML = 'تعذر فتح الكتاب (' + (e && e.message ? e.message : e) + ').<br>تأكد أن الملف <b>' + f + '</b> مرفوع في نفس مكان index.html بنفس الاسم.<br><a href="'+url+'">جرّب فتح الملف مباشرة</a>';
+  });
+})();
+</script>
+</body>
+</html>
